@@ -1,0 +1,18 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables (API Keys)
+.env
+
+# Vector database & uploaded docs
+chroma_DB/
+doc_files/*
+
+# Prevent ignoring the directory itself if empty
+!doc_files/.gitkeep
+
+# Python cache
+__pycache__/
+*.pyc
