@@ -65,7 +65,7 @@ def process_document(path):
         return
 
     ## 3. Embeddings and Vector DB
-    embedding_model = MistralAIEmbeddings(model="mistral-embed")
+    embedding_model = MistralAIEmbeddings(model="mistral-embed", max_retries=5)
     vectorstore = Chroma.from_documents(
         documents=chunks,
         embedding=embedding_model,
