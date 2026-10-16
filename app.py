@@ -55,7 +55,7 @@ retriever = vectorstore.as_retriever(
 # create Agent - (for that we need tool, llm, prompt?)
 
 # llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
-llm= ChatMistralAI(model="mistral-small-2506")
+llm= ChatMistralAI(model="mistral-small-2603")
 @tool
 def retrieve_context(query:str):  #(query:str) iska matlb query lega string ki type mai
     """Retrieve relevant information from the document knowledge base using MMR search.
