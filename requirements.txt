@@ -170,6 +170,8 @@ threadpoolctl==3.6.0
 tiktoken==0.13.0
 tokenizers==0.22.2
 toml==0.10.2
+langchain>=1.0.0
+langgraph
 torch==2.13.0
 tqdm==4.68.4
 transformers==5.13.1
