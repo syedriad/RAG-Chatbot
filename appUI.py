@@ -83,8 +83,8 @@ def process_document(path):
         }
     )
 
-    ## 5. Agent Setup with Rigid Tool Guardrails
-    llm = ChatMistralAI(model="mistral-small-2506")
+    ## 5. Agent Setup with Rigid Tool Guardrails (Updated model to current active alias)
+    llm = ChatMistralAI(model="mistral-small-latest")
 
     @tool
     def retrieve_context(query: str) -> str:
