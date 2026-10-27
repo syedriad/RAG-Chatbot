@@ -6,7 +6,7 @@ load_dotenv()
 
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_mistralai import ChatMistralAI, MistralAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.agents import create_agent
 from langchain.tools import tool
@@ -17,14 +17,14 @@ import streamlit as st
 
 # Set Streamlit Page Configuration
 st.set_page_config(
-    page_title="DocuTalk -RAG pdf Chatbot",
+    page_title="DocuTalk - RAG PDF Chatbot",
     page_icon="📚",
     layout="centered"
 )
 
 # Header Section
 st.title("📚 DocuTalk - RAG PDF Chatbot")
-st.caption("Upload your PDFs and chat strictly with the document's contents.")
+st.caption("Upload your PDFs and chat strictly with the document's contents (Powered by Gemini).")
 st.divider()
 
 ### Data in st session
@@ -64,8 +64,8 @@ def process_document(path):
         st.error("Could not extract text from the provided PDFs.")
         return
 
-    ## 3. Embeddings and Vector DB
-    embedding_model = MistralAIEmbeddings(model="mistral-embed", max_retries=5)
+    ## 3. Embeddings and Vector DB (Switched to Google Embeddings)
+    embedding_model = GoogleGenerativeAIEmbeddings(model="text-embedding-004")
     vectorstore = Chroma.from_documents(
         documents=chunks,
         embedding=embedding_model,
@@ -83,8 +83,8 @@ def process_document(path):
         }
     )
 
-    ## 5. Agent Setup with Rigid Tool Guardrails (Updated model to current active alias)
-    llm = ChatMistralAI(model="mistral-small-latest")
+    ## 5. Agent Setup with Gemini LLM
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
     @tool
     def retrieve_context(query: str) -> str:
@@ -116,7 +116,7 @@ CRITICAL INSTRUCTIONS:
     agent = create_agent(
         model=llm,
         tools=tools,
-        system_prompt=system_prompt,
+52    system_prompt=system_prompt,
         checkpointer=memory
     )
 
