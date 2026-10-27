@@ -177,7 +177,7 @@ from langchain_google_genai import (
     GoogleGenerativeAIEmbeddings,
 )
 from langchain_community.vectorstores import Chroma
-from langgraph.prebuilt import create_agent
+from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain.tools import tool
 
