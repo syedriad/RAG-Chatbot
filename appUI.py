@@ -163,6 +163,6 @@ if st.session_state.document_uploaded and st.session_state.agent:
             {"configurable": {"thread_id": "1"}}
         )
 
-        answer = response["messages"][-1].content
+        answer = response["messages"][-1].text
         st.chat_message("ai").markdown(answer)
         st.session_state.messages.append({"role": "ai", "content": answer})
