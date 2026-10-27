@@ -116,7 +116,7 @@ CRITICAL INSTRUCTIONS:
     agent = create_agent(
         model=llm,
         tools=tools,
-52    system_prompt=system_prompt,
+        system_prompt=system_prompt,
         checkpointer=memory
     )
 
