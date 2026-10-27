@@ -84,7 +84,7 @@ def process_document(path):
     )
 
     ## 5. Agent Setup with Gemini LLM
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+    llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash")
 
     @tool
     def retrieve_context(query: str) -> str:
