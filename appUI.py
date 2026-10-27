@@ -65,7 +65,7 @@ def process_document(path):
         return
 
     ## 3. Embeddings and Vector DB (Switched to Google Embeddings)
-    embedding_model = GoogleGenerativeAIEmbeddings(model="text-embedding-004")
+    embedding_model = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2-preview")
     vectorstore = Chroma.from_documents(
         documents=chunks,
         embedding=embedding_model,
